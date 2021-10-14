@@ -19,11 +19,12 @@ public class Main extends Application {
 			Button submit = new Button("Submit");
 			TextArea schedule = new TextArea();
 			
-			System.out.println("added by Aakash");
+			//Added by Tauheed
 			System.out.println("Added by Tauheed");
 			System.out.println("Added by Rachel");
 			System.out.println("Added by Mayo");
-			System.out.println("Added by Talha")
+			System.out.println("Added by Anon :)");
+			System.out.println();
 			
 			
 			submit.setOnAction(new EventHandler<ActionEvent>() {
@@ -47,7 +48,6 @@ public class Main extends Application {
        
 			gridPane.add(schedule, 0, 0);
 			gridPane.add(submit, 0, 1);
-			System.out.println("Hi");
 			
 			Scene scene = new Scene(gridPane,300,140);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());

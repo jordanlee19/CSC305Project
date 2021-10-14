@@ -19,6 +19,9 @@ public class Main extends Application {
 			Button submit = new Button("Submit");
 			TextArea schedule = new TextArea();
 			
+			//Added by Tauheed
+			System.out.println("Added by Tauheed");
+			
 			submit.setOnAction(new EventHandler<ActionEvent>() {
 				@Override 
 				public void handle(ActionEvent e) {

@@ -20,9 +20,6 @@ public class Main extends Application {
 			TextArea schedule = new TextArea();
 			
 			System.out.println("added by Aakash");
-			System.out.println("lets party party");
-			System.out.println("added by Jordan");
-
 			System.out.println("Added by Tauheed");
 			System.out.println("Added by Rachel");
 			System.out.println("Added by Mayo");

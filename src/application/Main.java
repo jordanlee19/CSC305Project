@@ -22,6 +22,8 @@ public class Main extends Application {
 			//Added by Tauheed
 			System.out.println("Added by Tauheed");
 			System.out.println("Added by Rachel");
+			System.out.println("Added by Mayo");
+			
 			
 			submit.setOnAction(new EventHandler<ActionEvent>() {
 				@Override 

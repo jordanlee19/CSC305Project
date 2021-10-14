@@ -20,7 +20,7 @@ public class Main extends Application {
 			TextArea schedule = new TextArea();
 			
 			System.out.println("added by Aakash");
-			System.out.println("lets party");
+			System.out.println("lets party party");
 			System.out.println("added by Jordan");
 
 			System.out.println("Added by Tauheed");

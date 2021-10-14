@@ -21,6 +21,8 @@ public class Main extends Application {
 			
 			System.out.println("This is a print statement");
 			
+			System.out.print("This is a second print statement");
+			
 			submit.setOnAction(new EventHandler<ActionEvent>() {
 				@Override 
 				public void handle(ActionEvent e) {

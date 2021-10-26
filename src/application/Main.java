@@ -19,6 +19,15 @@ public class Main extends Application {
 			Button submit = new Button("Submit");
 			TextArea schedule = new TextArea();
 			
+<<<<<<< HEAD
+=======
+			//Added by Tauheed
+			System.out.println("Added by Tauheed");
+			System.out.println("Added by Mayo");
+			System.out.println("Added by Anon :)");
+			System.out.println();
+			
+>>>>>>> branch 'main' of https://github.com/rachelmontesano/CSC305Project.git
 			
 			submit.setOnAction(new EventHandler<ActionEvent>() {
 				@Override 

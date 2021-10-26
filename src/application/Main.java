@@ -19,13 +19,6 @@ public class Main extends Application {
 			Button submit = new Button("Submit");
 			TextArea schedule = new TextArea();
 			
-			//Added by Tauheed
-			System.out.println("Added by Tauheed");
-			System.out.println("Added by Rachel");
-			System.out.println("Added by Mayo");
-			System.out.println("Added by Anon :)");
-			System.out.println();
-			
 			
 			submit.setOnAction(new EventHandler<ActionEvent>() {
 				@Override 

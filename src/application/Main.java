@@ -1,5 +1,7 @@
 package application;
 
+import java.util.Scanner;
+
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -25,11 +27,27 @@ public class Main extends Application {
 				public void handle(ActionEvent e) {
 					Stage newStage = new Stage();
 					GridPane grid2 = new GridPane();
-					Text text2 = new Text(10,50,"This is your schedule.");
+					String rawSched = schedule.getText();
+					String visualText = "This is your schedule by line:";
+					
+					//Iterates over the string line by line, not sure how to separate classes properly yet.
+					Iterable<String> sc = () ->
+					    new Scanner(rawSched).useDelimiter("\n");
+					for (String line: sc) {
+
+						if (line.replaceAll("\\s", "").equals("")) { 
+							//do nothing
+						} else {
+							visualText += "\n" + line;
+						}
+					}
+					
+					//Creates the window, not sure how to deal with schedule being super long?
+					Text text2 = new Text(10,50,visualText);
 					grid2.setPadding(new Insets(10, 10, 10, 10));
 					grid2.setVgap(5);
 					grid2.setHgap(5);
-					newStage.setScene(new Scene(grid2, 275, 275));
+					newStage.setScene(new Scene(grid2, 275, 950));
 					newStage.show();
 					grid2.add(text2, 0, 0);
 				}

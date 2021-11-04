@@ -27,8 +27,9 @@ public class Main extends Application {
 			
 			System.out.println("hello");
 			System.out.println("Cloned again, working nw");
-			
 			System.out.println("Pull/push working for me now");
+			System.out.println("does it work?");
+			
 			
 			submit.setOnAction(new EventHandler<ActionEvent>() {
 				@Override 

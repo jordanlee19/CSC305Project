@@ -23,7 +23,7 @@ public class Main extends Application {
 			TextArea schedule = new TextArea();
 			String testString = new String("Hello this is a test");
 			
-			
+			System.out.println("hello");
 			submit.setOnAction(new EventHandler<ActionEvent>() {
 				@Override 
 				public void handle(ActionEvent e) {

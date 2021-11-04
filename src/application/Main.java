@@ -22,7 +22,7 @@ public class Main extends Application {
 			Button submit = new Button("Submit");
 			TextArea schedule = new TextArea();
 			
-			
+			System.out.println("hello");
 			submit.setOnAction(new EventHandler<ActionEvent>() {
 				@Override 
 				public void handle(ActionEvent e) {

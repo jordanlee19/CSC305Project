@@ -21,6 +21,7 @@ public class Main extends Application {
 			GridPane gridPane = new GridPane();
 			Button submit = new Button("Submit");
 			TextArea schedule = new TextArea();
+			String testString = new String("Hello this is a test");
 			
 			
 			submit.setOnAction(new EventHandler<ActionEvent>() {

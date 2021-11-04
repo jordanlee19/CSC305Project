@@ -86,29 +86,29 @@ public class Main extends Application {
 					if (lineCount >= 11) {
 						Course courseOneObj = new Course(courseOneList);
 						winSize+=145;
-						output += "\n" + "\n" + courseOneObj.courseCode + "\n" + courseOneObj.courseName + "\n"
-								+ courseOneObj.days + "\n" + courseOneObj.facultyName + "\n" + courseOneObj.location
+						output += "\n" + "\n" + courseOneObj.location + "\n" + courseOneObj.facultyName + "\n"
+								+ courseOneObj.courseCode + "\n" + courseOneObj.courseName + "\n" + courseOneObj.days
 								+ "\n" + courseOneObj.time;
 					}
 					if (lineCount >= 22) {
 						Course courseTwoObj = new Course(courseTwoList);
 						winSize+=125;
-						output += "\n" + "\n" + courseTwoObj.courseCode + "\n" + courseTwoObj.courseName + "\n"
-								+ courseTwoObj.days + "\n" + courseTwoObj.facultyName + "\n" + courseTwoObj.location
+						output += "\n" + "\n" + courseTwoObj.location + "\n" + courseTwoObj.facultyName + "\n"
+								+ courseTwoObj.courseCode + "\n" + courseTwoObj.courseName + "\n" + courseTwoObj.days
 								+ "\n" + courseTwoObj.time;
 					}
 					if (lineCount >= 33) {
 						Course courseThreeObj = new Course(courseThreeList);
 						winSize+=125;
-						output += "\n" + "\n" + courseThreeObj.courseCode + "\n" + courseThreeObj.courseName + "\n"
-								+ courseThreeObj.days + "\n" + courseThreeObj.facultyName + "\n" + courseThreeObj.location
+						output += "\n" + "\n" + courseThreeObj.location + "\n" + courseThreeObj.facultyName + "\n"
+								+ courseThreeObj.courseCode + "\n" + courseThreeObj.courseName + "\n" + courseThreeObj.days
 								+ "\n" + courseThreeObj.time;
 					}
 					if (lineCount >= 44) {
 						Course courseFourObj = new Course(courseFourList);
 						winSize+=125;
-						output += "\n" + "\n" + courseFourObj.courseCode + "\n" + courseFourObj.courseName + "\n"
-								+ courseFourObj.days + "\n" + courseFourObj.facultyName + "\n" + courseFourObj.location
+						output += "\n" + "\n" + courseFourObj.location + "\n" + courseFourObj.facultyName + "\n"
+								+ courseFourObj.courseCode + "\n" + courseFourObj.courseName + "\n" + courseFourObj.days
 								+ "\n" + courseFourObj.time;
 					}
 					

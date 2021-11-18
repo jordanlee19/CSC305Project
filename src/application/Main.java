@@ -19,6 +19,7 @@ public class Main extends Application {
 	public void start(Stage primaryStage) {
 		try {
 			GridPane gridPane = new GridPane();
+			System.out.println("Added by Talha - Testing");
 			Button submit = new Button("Submit");
 			TextArea schedule = new TextArea();
 			String testString = new String("Hello this is a test");

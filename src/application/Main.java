@@ -30,6 +30,7 @@ public class Main extends Application {
 			System.out.println("Cloned again, working nw");
 			System.out.println("Pull/push working for me now");
 			System.out.println("does it work?");
+			System.out.println("edits made");
 			
 			
 			submit.setOnAction(new EventHandler<ActionEvent>() {

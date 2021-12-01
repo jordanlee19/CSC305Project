@@ -24,13 +24,7 @@ public class Main extends Application {
 			TextArea schedule = new TextArea();
 			String testString = new String("Hello this is a test");
 			String newString = new String("This is a string added by jordan");
-			System.out.println("MAYO");
-			
-			System.out.println("hello");
-			System.out.println("Cloned again, working nw");
-			System.out.println("Pull/push working for me now");
-			System.out.println("does it work?");
-			System.out.println("edits made");
+
 			
 			
 			submit.setOnAction(new EventHandler<ActionEvent>() {

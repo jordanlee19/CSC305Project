@@ -29,7 +29,6 @@ public class Course {
 				"HEPE", "HIST", "HONR", "INTR", "ISS", "JPN", "KINS", "LATN", "LING", "LSC", "MATH",
 				"MJMC", "MUCH", "MUEN", "MULS", "MUSC", "NTGR", "PHIL", "PHYS", "POLS", "PSYC", 
 				"PUBH", "RELG", "SCAN", "SLP", "SOAN", "SPAN", "THEA", "WGSS", "WLLC");
-		
+		System.out.println(courses);
 	}
-
 }

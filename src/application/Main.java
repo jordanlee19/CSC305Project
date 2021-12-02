@@ -114,9 +114,8 @@ public class Main extends Application {
 					
 					for (int i = 0; i < courseNum; i++) {					
 						courseNameList.get(i).makeCourse(courseMap.get(i+1));				
-						output += "\n" + "\n" + courseNameList.get(i).location + "\n" + courseNameList.get(i).facultyName + "\n"
-							+ courseNameList.get(i).courseCode + "\n" + courseNameList.get(i).courseName + "\n" + courseNameList.get(i).days
-							+ "\n" + courseNameList.get(i).time;
+						output += "\n" + "\n" + courseNameList.get(i).courseCode + "\n" + courseNameList.get(i).courseName + "\n"
+							+ courseNameList.get(i).location + "\n" + courseNameList.get(i).daysOne + "\n" + courseNameList.get(i).facultyName;
 					
 					}
 					

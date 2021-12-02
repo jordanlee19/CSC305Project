@@ -1,5 +1,6 @@
 package application;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -14,8 +15,11 @@ import javafx.geometry.Insets;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.scene.control.Button;
+import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 	
 public class Main extends Application {
@@ -28,9 +32,7 @@ public class Main extends Application {
 			TextArea schedule = new TextArea();
 			String testString = new String("Hello this is a test");
 			String newString = new String("This is a string added by jordan");
-			//sss
-			//ttt
-			//iii
+
 
 			
 			
@@ -120,28 +122,27 @@ public class Main extends Application {
 					}
 					
 					//Creates the window
-					Text text2 = new Text(10,50,output);
-					grid2.setPadding(new Insets(10, 10, 10, 10));
-					grid2.setVgap(5);
-					grid2.setHgap(5);
-					newStage.setScene(new Scene(grid2, 300, winSize));
-					newStage.show();
-					grid2.add(text2, 0, 0);
-					newStage.setTitle("Schedule Visualizer");
+					
+					
+					VBox vbox = new VBox(20);
+				    Scene scene = new Scene(vbox, 400, 400);
+				    primaryStage.setScene(scene);
+				    DatePicker startDatePicker = new DatePicker();
+				    DatePicker endDatePicker = new DatePicker();
+				    
+				    startDatePicker.setValue(LocalDate.now());
+				    endDatePicker.setValue(startDatePicker.getValue().plusDays(1));
+
+				    vbox.getChildren().add(new Label("Start Date:"));
+				    vbox.getChildren().add(startDatePicker);
+				    vbox.getChildren().add(new Label("End Date:"));
+				    vbox.getChildren().add(endDatePicker);
+				    primaryStage.show();
 				}
 			});
 			
-			gridPane.setPadding(new Insets(10, 10, 10, 10));
-			gridPane.setVgap(5);
-			gridPane.setHgap(5);
-			gridPane.add(schedule, 0, 0);
-			gridPane.add(submit, 0, 1);
+
 			
-			Scene scene = new Scene(gridPane,300,300);
-			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-			primaryStage.setScene(scene);
-			primaryStage.setTitle("Schedule Visualizer");
-			primaryStage.show();
 		} catch(Exception e) {
 			e.printStackTrace();
 		}

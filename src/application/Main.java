@@ -1,6 +1,10 @@
 package application;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
 
 import javafx.application.Application;
@@ -36,102 +40,84 @@ public class Main extends Application {
 					Stage newStage = new Stage();
 					GridPane grid2 = new GridPane();
 					String rawSched = schedule.getText();
-					ArrayList<String> courseOne = new ArrayList<String>();
-					ArrayList<String> courseTwo = new ArrayList<String>();
-					ArrayList<String> courseThree = new ArrayList<String>();
-					ArrayList<String> courseFour = new ArrayList<String>();
-					int lineCount = 1;
-					String output = "These are your courses: ";
+
 					
+				    ArrayList<String> courseOne = new ArrayList<String>();
+				    ArrayList<String> courseTwo = new ArrayList<String>();
+				    ArrayList<String> courseThree = new ArrayList<String>();
+				    ArrayList<String> courseFour = new ArrayList<String>();
+				    ArrayList<String> courseFive = new ArrayList<String>();
+				    ArrayList<String> courseSix = new ArrayList<String>();
+				    ArrayList<String> courseSeven = new ArrayList<String>();
+				    ArrayList<String> courseEight = new ArrayList<String>();
+				    ArrayList<String> courseNine = new ArrayList<String>();
+				    ArrayList<String> courseTen = new ArrayList<String>();
+				    ArrayList<String> courseEleven = new ArrayList<String>();
+				    
+				    Map<Integer, ArrayList<String>> courseMap = new HashMap<>();
+				    courseMap.put(1, courseOne);
+				    courseMap.put(2, courseTwo);
+				    courseMap.put(3, courseThree);
+				    courseMap.put(4, courseFour);
+				    courseMap.put(5, courseFive);
+				    courseMap.put(6, courseSix);
+				    courseMap.put(7, courseSeven);
+				    courseMap.put(8, courseEight);
+				    courseMap.put(9, courseNine);
+				    courseMap.put(10, courseTen);
+				    courseMap.put(11, courseEleven);
+				    
+				    ArrayList<String> courses = new ArrayList<>();
+					Collections.addAll(courses, "ACCT", "ARHI", "AUGIE-CHOICE", "BIOL", "BUSN", "CHEM", "CHNS", "CLAS",
+							"COMM", "CORE", "CSC", "CSD", "DATA", "ECON", "EDMU", "EDUC", "ENCW", "ENGL", "ENGR",
+							"ENTM", "ENVR", "FREN", "FYH", "FYI", "GEOG", "GEOL", "GIST", "GRD", "GREK", "GRMN", 
+							"HEPE", "HIST", "HONR", "INTR", "ISS", "JPN", "KINS", "LATN", "LING", "LSC", "MATH",
+							"MJMC", "MUCH", "MUEN", "MULS", "MUSC", "NTGR", "PHIL", "PHYS", "POLS", "PSYC", 
+							"PUBH", "RELG", "SCAN", "SLP", "SOAN", "SPAN", "SPST", "THEA", "WGSS", "WLLC");
+					
+					int courseNum = 0;
+					String output = "These are your courses: ";
+
 					//Iterates over the string line by line, not sure how to separate classes properly yet.
 					Iterable<String> sc = () ->
-					    new Scanner(rawSched).useDelimiter("\n");
-					
+					   new Scanner(rawSched).useDelimiter("\n");
+
 					for (String line: sc) {
-						if (lineCount <= 11) {
-							courseOne.add(line);
-							lineCount++;
-						} else if (lineCount > 11 && lineCount <= 22) {
-							courseTwo.add(line);
-							lineCount++;
-						} else if (lineCount > 22 && lineCount <= 33) {
-							courseThree.add(line);
-							lineCount++;
-						} else if (lineCount > 33 && lineCount <= 44) {
-							courseFour.add(line);
-							lineCount++;
+						for (String code : courses) {
+							if (line.contains(code) && !line.contains("Lab")) {
+								courseNum++;
+							}
 						}
+						(courseMap.get(courseNum)).add(line);
 					}
+
 					
-					ArrayList<String> courseOneList = new ArrayList<String>();
-					ArrayList<String> courseTwoList = new ArrayList<String>();
-					ArrayList<String> courseThreeList = new ArrayList<String>();
-					ArrayList<String> courseFourList = new ArrayList<String>();
+			
+					Course courseOneObj = new Course();
+					Course courseTwoObj = new Course();
+					Course courseThreeObj = new Course();
+					Course courseFourObj = new Course();
+					Course courseFiveObj = new Course();
+					Course courseSixObj = new Course();
+					Course courseSevenObj = new Course();
+					Course courseEightObj = new Course();
+					Course courseNineObj = new Course();
+					Course courseTenObj = new Course();
+					Course courseElevenObj = new Course();
 					
-					if (lineCount >= 11) {
-						for (int i = 0; i < 11; i++) {
-							courseOneList.add(courseOne.get(i));
-						}
-					}
-					if (lineCount >= 22) {
-						for (int i = 0; i < 11; i++) {
-							courseTwoList.add(courseTwo.get(i));
-						}
-					}
-					if (lineCount >= 33) {
-						for (int i = 0; i < 11; i++) {
-							courseThreeList.add(courseThree.get(i));
-						}
-					}
-					if (lineCount >= 44) {
-						for (int i = 0; i < 11; i++) {
-							courseFourList.add(courseFour.get(i));
-						}
-					}
+					ArrayList<Course> courseNameList = new ArrayList<>();
+					Collections.addAll(courseNameList, courseOneObj, courseTwoObj, courseThreeObj, courseFourObj,
+							courseFiveObj, courseSixObj, courseSevenObj, courseEightObj, courseNineObj,
+							courseTenObj, courseElevenObj);
 					
-					int winSize = 0;
-					if (lineCount >= 11) {
-						Course courseOneObj = new Course(courseOneList);
-						winSize+=145;
-//						output += "\n" + "\n" + courseOneObj.location + "\n" + courseOneObj.facultyName + "\n"
-//								+ courseOneObj.courseCode + "\n" + courseOneObj.courseName + "\n" + courseOneObj.days
-//								+ "\n" + courseOneObj.time;
-						
-						output += "\n" + "\n" + courseOneObj.courseCode + "\n" + courseOneObj.courseName + "\n"
-								+ courseOneObj.location + "\n" + courseOneObj.days + "\n" + courseOneObj.facultyName;
-						
-					}
-					if (lineCount >= 22) {
-						Course courseTwoObj = new Course(courseTwoList);
-						winSize+=125;
-//						output += "\n" + "\n" + courseTwoObj.location + "\n" + courseTwoObj.facultyName + "\n"
-//								+ courseTwoObj.courseCode + "\n" + courseTwoObj.courseName + "\n" + courseTwoObj.days
-//								+ "\n" + courseTwoObj.time;
-						
-						output += "\n" + "\n" + courseTwoObj.courseCode + "\n" + courseTwoObj.courseName + "\n"
-								+ courseTwoObj.location + "\n" + courseTwoObj.days + "\n" + courseTwoObj.facultyName;
-						
-					}
-					if (lineCount >= 33) {
-						Course courseThreeObj = new Course(courseThreeList);
-						winSize+=125;
-//						output += "\n" + "\n" + courseThreeObj.location + "\n" + courseThreeObj.facultyName + "\n"
-//								+ courseThreeObj.courseCode + "\n" + courseThreeObj.courseName + "\n" + courseThreeObj.days
-//								+ "\n" + courseThreeObj.time;
-						output += "\n" + "\n" + courseThreeObj.courseCode + "\n" + courseThreeObj.courseName + "\n"
-								+ courseThreeObj.location + "\n" + courseThreeObj.days + "\n" + courseThreeObj.facultyName;
-					}
-					if (lineCount >= 44) {
-						Course courseFourObj = new Course(courseFourList);
-						winSize+=125;
-						
-//						output += "\n" + "\n" + courseFourObj.location + "\n" + courseFourObj.facultyName + "\n"
-//								+ courseFourObj.courseCode + "\n" + courseFourObj.courseName + "\n" + courseFourObj.days
-//								+ "\n" + courseFourObj.time;
-					//make more arrayLists for courses?						
-						
-						output += "\n" + "\n" + courseFourObj.courseCode + "\n" + courseFourObj.courseName + "\n"
-								+ courseFourObj.location + "\n" + courseFourObj.days + "\n" + courseFourObj.facultyName;
+					int winSize = courseNum * 135;
+					
+					for (int i = 0; i < courseNum; i++) {					
+						courseNameList.get(i).makeCourse(courseMap.get(i+1));				
+						output += "\n" + "\n" + courseNameList.get(i).location + "\n" + courseNameList.get(i).facultyName + "\n"
+							+ courseNameList.get(i).courseCode + "\n" + courseNameList.get(i).courseName + "\n" + courseNameList.get(i).days
+							+ "\n" + courseNameList.get(i).time;
+					
 					}
 					
 					//Creates the window

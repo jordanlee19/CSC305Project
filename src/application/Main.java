@@ -93,30 +93,45 @@ public class Main extends Application {
 					if (lineCount >= 11) {
 						Course courseOneObj = new Course(courseOneList);
 						winSize+=145;
-						output += "\n" + "\n" + courseOneObj.location + "\n" + courseOneObj.facultyName + "\n"
-								+ courseOneObj.courseCode + "\n" + courseOneObj.courseName + "\n" + courseOneObj.days
-								+ "\n" + courseOneObj.time;
+//						output += "\n" + "\n" + courseOneObj.location + "\n" + courseOneObj.facultyName + "\n"
+//								+ courseOneObj.courseCode + "\n" + courseOneObj.courseName + "\n" + courseOneObj.days
+//								+ "\n" + courseOneObj.time;
+						
+						output += "\n" + "\n" + courseOneObj.courseCode + "\n" + courseOneObj.courseName + "\n"
+								+ courseOneObj.location + "\n" + courseOneObj.days + "\n" + courseOneObj.facultyName;
+						
 					}
 					if (lineCount >= 22) {
 						Course courseTwoObj = new Course(courseTwoList);
 						winSize+=125;
-						output += "\n" + "\n" + courseTwoObj.location + "\n" + courseTwoObj.facultyName + "\n"
-								+ courseTwoObj.courseCode + "\n" + courseTwoObj.courseName + "\n" + courseTwoObj.days
-								+ "\n" + courseTwoObj.time;
+//						output += "\n" + "\n" + courseTwoObj.location + "\n" + courseTwoObj.facultyName + "\n"
+//								+ courseTwoObj.courseCode + "\n" + courseTwoObj.courseName + "\n" + courseTwoObj.days
+//								+ "\n" + courseTwoObj.time;
+						
+						output += "\n" + "\n" + courseTwoObj.courseCode + "\n" + courseTwoObj.courseName + "\n"
+								+ courseTwoObj.location + "\n" + courseTwoObj.days + "\n" + courseTwoObj.facultyName;
+						
 					}
 					if (lineCount >= 33) {
 						Course courseThreeObj = new Course(courseThreeList);
 						winSize+=125;
-						output += "\n" + "\n" + courseThreeObj.location + "\n" + courseThreeObj.facultyName + "\n"
-								+ courseThreeObj.courseCode + "\n" + courseThreeObj.courseName + "\n" + courseThreeObj.days
-								+ "\n" + courseThreeObj.time;
+//						output += "\n" + "\n" + courseThreeObj.location + "\n" + courseThreeObj.facultyName + "\n"
+//								+ courseThreeObj.courseCode + "\n" + courseThreeObj.courseName + "\n" + courseThreeObj.days
+//								+ "\n" + courseThreeObj.time;
+						output += "\n" + "\n" + courseThreeObj.courseCode + "\n" + courseThreeObj.courseName + "\n"
+								+ courseThreeObj.location + "\n" + courseThreeObj.days + "\n" + courseThreeObj.facultyName;
 					}
 					if (lineCount >= 44) {
 						Course courseFourObj = new Course(courseFourList);
 						winSize+=125;
-						output += "\n" + "\n" + courseFourObj.location + "\n" + courseFourObj.facultyName + "\n"
-								+ courseFourObj.courseCode + "\n" + courseFourObj.courseName + "\n" + courseFourObj.days
-								+ "\n" + courseFourObj.time;
+						
+//						output += "\n" + "\n" + courseFourObj.location + "\n" + courseFourObj.facultyName + "\n"
+//								+ courseFourObj.courseCode + "\n" + courseFourObj.courseName + "\n" + courseFourObj.days
+//								+ "\n" + courseFourObj.time;
+					//make more arrayLists for courses?						
+						
+						output += "\n" + "\n" + courseFourObj.courseCode + "\n" + courseFourObj.courseName + "\n"
+								+ courseFourObj.location + "\n" + courseFourObj.days + "\n" + courseFourObj.facultyName;
 					}
 					
 					//Creates the window

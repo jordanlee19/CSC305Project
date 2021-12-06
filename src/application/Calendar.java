@@ -32,7 +32,7 @@ public class Calendar {
 
 	public void makeGrid() {
 		Group root = new Group();
-		Scene scene = new Scene(root, 1100, 600);
+		Scene scene = new Scene(root, 1100, 800);
 		
 
 		this.days(root);
@@ -310,6 +310,30 @@ public class Calendar {
 		t11.setX(25);
 		t11.setY(550);
 		root.getChildren().add(t11);
+		
+		Text t12 = new Text();
+		t12.setText("7pm");
+		t12.setX(25);
+		t12.setY(600);
+		root.getChildren().add(t12);
+		
+		Text t13 = new Text();
+		t13.setText("8pm");
+		t13.setX(25);
+		t13.setY(650);
+		root.getChildren().add(t13);
+		
+		Text t14 = new Text();
+		t14.setText("9pm");
+		t14.setX(25);
+		t14.setY(700);
+		root.getChildren().add(t14);
+		
+		Text t15 = new Text();
+		t15.setText("10pm");
+		t15.setX(25);
+		t15.setY(750);
+		root.getChildren().add(t15);
 
 		return root;
 	}
@@ -366,88 +390,109 @@ public class Calendar {
 		root.getChildren().add(line6);
 
 		Line line7 = new Line();
-		line7.setStartX(100);
+		line7.setStartX(90);
 		line7.setStartY(50);
 		line7.setEndX(1100);
 		line7.setEndY(50);
 		root.getChildren().add(line7);
 
 		Line line8 = new Line();
-		line8.setStartX(100);
+		line8.setStartX(90);
 		line8.setStartY(100);
 		line8.setEndX(1100);
 		line8.setEndY(100);
 		root.getChildren().add(line8);
 
 		Line line9 = new Line();
-		line9.setStartX(100);
+		line9.setStartX(90);
 		line9.setStartY(150);
 		line9.setEndX(1100);
 		line9.setEndY(150);
 		root.getChildren().add(line9);
 
 		Line line10 = new Line();
-		line10.setStartX(100);
+		line10.setStartX(90);
 		line10.setStartY(200);
 		line10.setEndX(1100);
 		line10.setEndY(200);
 		root.getChildren().add(line10);
 
 		Line line11 = new Line();
-		line11.setStartX(100);
+		line11.setStartX(90);
 		line11.setStartY(250);
 		line11.setEndX(1100);
 		line11.setEndY(250);
 		root.getChildren().add(line11);
 
 		Line line12 = new Line();
-		line12.setStartX(100);
+		line12.setStartX(90);
 		line12.setStartY(300);
 		line12.setEndX(1100);
 		line12.setEndY(300);
 		root.getChildren().add(line12);
 
 		Line line13 = new Line();
-		line13.setStartX(100);
+		line13.setStartX(90);
 		line13.setStartY(350);
 		line13.setEndX(1100);
 		line13.setEndY(350);
 		root.getChildren().add(line13);
 
 		Line line14 = new Line();
-		line14.setStartX(100);
+		line14.setStartX(90);
 		line14.setStartY(400);
 		line14.setEndX(1100);
 		line14.setEndY(400);
 		root.getChildren().add(line14);
 
 		Line line15 = new Line();
-		line15.setStartX(100);
+		line15.setStartX(90);
 		line15.setStartY(450);
 		line15.setEndX(1100);
 		line15.setEndY(450);
 		root.getChildren().add(line15);
 		
 		Line line16 = new Line();
-		line16.setStartX(100);
+		line16.setStartX(90);
 		line16.setStartY(500);
 		line16.setEndX(1100);
 		line16.setEndY(500);
 		root.getChildren().add(line16);
 		
 		Line line17 = new Line();
-		line17.setStartX(100);
+		line17.setStartX(90);
 		line17.setStartY(550);
 		line17.setEndX(1100);
 		line17.setEndY(550);
 		root.getChildren().add(line17);
 		
 		Line line18 = new Line();
-		line18.setStartX(100);
+		line18.setStartX(90);
 		line18.setStartY(600);
 		line18.setEndX(1100);
 		line18.setEndY(600);
 		root.getChildren().add(line18);
+		
+		Line line19 = new Line();
+		line19.setStartX(90);
+		line19.setStartY(650);
+		line19.setEndX(1100);
+		line19.setEndY(650);
+		root.getChildren().add(line19);
+		
+		Line line20 = new Line();
+		line20.setStartX(90);
+		line20.setStartY(700);
+		line20.setEndX(1100);
+		line20.setEndY(700);
+		root.getChildren().add(line20);
+		
+		Line line21 = new Line();
+		line21.setStartX(90);
+		line21.setStartY(750);
+		line21.setEndX(1100);
+		line21.setEndY(750);
+		root.getChildren().add(line21);
 
 		
 

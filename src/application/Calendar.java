@@ -346,155 +346,27 @@ public class Calendar {
 	 * @return - Group root
 	 */
 	public Group addLines(Group root) {
-		Line line1 = new Line();
-		line1.setStartX(xCordinatesMonday);
-		line1.setStartY(0);
-		line1.setEndX(100);
-		line1.setEndY(875);
-		root.getChildren().add(line1);
-
-		Line line2 = new Line();
-		line2.setStartX(xCordinatesTuesday);
-		line2.setStartY(0);
-		line2.setEndX(300);
-		line2.setEndY(875);
-		root.getChildren().add(line2);
-
-		Line line3 = new Line();
-		line3.setStartX(xCordinatesWednesday);
-		line3.setStartY(0);
-		line3.setEndX(500);
-		line3.setEndY(875);
-		root.getChildren().add(line3);
-
-		Line line4 = new Line();
-		line4.setStartX(xCordinatesThursday);
-		line4.setStartY(0);
-		line4.setEndX(700);
-		line4.setEndY(875);
-		root.getChildren().add(line4);
-
-		Line line5 = new Line();
-		line5.setStartX(xCordinatesFriday);
-		line5.setStartY(0);
-		line5.setEndX(900);
-		line5.setEndY(875);
-		root.getChildren().add(line5);
-
-
-		Line line6 = new Line();
-		line6.setStartX(1100);
-		line6.setStartY(0);
-		line6.setEndX(1100);
-		line6.setEndY(1000);
-		root.getChildren().add(line6);
-
-		Line line7 = new Line();
-		line7.setStartX(90);
-		line7.setStartY(50);
-		line7.setEndX(1100);
-		line7.setEndY(50);
-		root.getChildren().add(line7);
-
-		Line line8 = new Line();
-		line8.setStartX(90);
-		line8.setStartY(100);
-		line8.setEndX(1100);
-		line8.setEndY(100);
-		root.getChildren().add(line8);
-
-		Line line9 = new Line();
-		line9.setStartX(90);
-		line9.setStartY(150);
-		line9.setEndX(1100);
-		line9.setEndY(150);
-		root.getChildren().add(line9);
-
-		Line line10 = new Line();
-		line10.setStartX(90);
-		line10.setStartY(200);
-		line10.setEndX(1100);
-		line10.setEndY(200);
-		root.getChildren().add(line10);
-
-		Line line11 = new Line();
-		line11.setStartX(90);
-		line11.setStartY(250);
-		line11.setEndX(1100);
-		line11.setEndY(250);
-		root.getChildren().add(line11);
-
-		Line line12 = new Line();
-		line12.setStartX(90);
-		line12.setStartY(300);
-		line12.setEndX(1100);
-		line12.setEndY(300);
-		root.getChildren().add(line12);
-
-		Line line13 = new Line();
-		line13.setStartX(90);
-		line13.setStartY(350);
-		line13.setEndX(1100);
-		line13.setEndY(350);
-		root.getChildren().add(line13);
-
-		Line line14 = new Line();
-		line14.setStartX(90);
-		line14.setStartY(400);
-		line14.setEndX(1100);
-		line14.setEndY(400);
-		root.getChildren().add(line14);
-
-		Line line15 = new Line();
-		line15.setStartX(90);
-		line15.setStartY(450);
-		line15.setEndX(1100);
-		line15.setEndY(450);
-		root.getChildren().add(line15);
+		int xCoord = 100;
+		for (int i = 0; i < 5; i++) {
+			Line line = new Line();
+			line.setStartX(xCoord);
+			line.setEndX(xCoord);
+			line.setStartY(0);
+			line.setEndY(875);
+			xCoord+=200;
+			root.getChildren().add(line);
+		}
 		
-		Line line16 = new Line();
-		line16.setStartX(90);
-		line16.setStartY(500);
-		line16.setEndX(1100);
-		line16.setEndY(500);
-		root.getChildren().add(line16);
-		
-		Line line17 = new Line();
-		line17.setStartX(90);
-		line17.setStartY(550);
-		line17.setEndX(1100);
-		line17.setEndY(550);
-		root.getChildren().add(line17);
-		
-		Line line18 = new Line();
-		line18.setStartX(90);
-		line18.setStartY(600);
-		line18.setEndX(1100);
-		line18.setEndY(600);
-		root.getChildren().add(line18);
-		
-		Line line19 = new Line();
-		line19.setStartX(90);
-		line19.setStartY(650);
-		line19.setEndX(1100);
-		line19.setEndY(650);
-		root.getChildren().add(line19);
-		
-		Line line20 = new Line();
-		line20.setStartX(90);
-		line20.setStartY(700);
-		line20.setEndX(1100);
-		line20.setEndY(700);
-		root.getChildren().add(line20);
-		
-		Line line21 = new Line();
-		line21.setStartX(90);
-		line21.setStartY(750);
-		line21.setEndX(1100);
-		line21.setEndY(750);
-		root.getChildren().add(line21);
-
-		
+		int yCoord = 50;
+		for (int i = 0; i < 15; i++) {
+			Line line = new Line();
+			line.setStartX(90);
+			line.setEndX(1100);
+			line.setStartY(yCoord);
+			line.setEndY(yCoord);
+			yCoord+=50;
+			root.getChildren().add(line);
+		}
 
 		return root;
 	}

@@ -30,7 +30,7 @@ public class GraphicMain extends Application {
 		try {
 			GridPane gridPaneMain = new GridPane();
 			gridPaneMain.setAlignment(Pos.CENTER);
-			Scene scene = new Scene(gridPaneMain, 1100, 400);
+			Scene scene = new Scene(gridPaneMain, 1100, 800);
 			primaryStage.setTitle("Schedule Maker");
 
 			gridPaneMain.setPadding(new Insets(10));
@@ -43,11 +43,12 @@ public class GraphicMain extends Application {
 			gridPaneMain.add(wordLabel, 0, 0);
 
 			Label schedule = new Label("Write Course Schedule Here:");
+			schedule.setFont(new Font("Times New Roman", 10));
 			gridPaneMain.add(schedule, 0, 1);
 
 			// Text area
-			TextArea userTextField = new TextArea();
-			gridPaneMain.add(userTextField, 0, 2);
+			TextArea textField = new TextArea();
+			gridPaneMain.add(textField, 0, 2);
 
 			// Submit Button
 			Button submit = new Button("Submit");
@@ -56,18 +57,17 @@ public class GraphicMain extends Application {
 			submit.setOnAction(value -> {
 
 				// Storing data from class schedule
-				String scheduleText = userTextField.getText();
-				String[] classSchedule = scheduleText.split("\n");
+				String[] classSchedule = textField.getText().split("\n");
 				ScheduleMaker submittedCourseList = new ScheduleMaker(classSchedule);
 
 				Tab tab_1 = new Tab("Tab_1");
 
 				ArrayList<Course> courses = submittedCourseList.getCourseList();
-				// Getting the intial course to check the remaining courses against
+				// Getting the initial course to check the remaining courses against
 				for (int courseIndex = 0; courseIndex < courses.size(); courseIndex++) {
 					Course course = courses.get(courseIndex);
 
-					// Going through each course to check against the intial course for any
+					// Going through each course to check against the initial course for any
 					// conflicts
 					for (int i = courseIndex + 1; i < courses.size(); i++) {
 

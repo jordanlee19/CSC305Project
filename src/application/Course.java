@@ -26,6 +26,10 @@ public class Course {
 	String[] timeOne;
 	String[] timeTwo;
 
+	public Course() {
+		
+	}
+	
 	public Course(String code, String course, String facultyMember, String building, String room, String startTime,
 			String endTime, String days) {
 		courseCode = code;

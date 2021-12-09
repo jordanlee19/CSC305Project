@@ -60,8 +60,6 @@ public class GraphicMain extends Application {
 				String[] classSchedule = textField.getText().split("\n");
 				ScheduleMaker submittedCourseList = new ScheduleMaker(classSchedule);
 
-				Tab tab_1 = new Tab("Tab_1");
-
 				ArrayList<Course> courses = submittedCourseList.getCourseList();
 				// Getting the initial course to check the remaining courses against
 				for (int courseIndex = 0; courseIndex < courses.size(); courseIndex++) {

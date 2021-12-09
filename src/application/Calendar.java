@@ -70,21 +70,25 @@ public class Calendar {
 
 		int j = 0;
 		
-		for (int i=0; i<courseList.size(); i++) {
-			Course course = courseList.get(i);
-			String courseCode = course.getClassCode();
+		for (Course course : courseList) {
+			String courseCode = course.getCourseCode();
 			String courseName = course.getName();
 			String faculty = course.getProfessor();
-			String building = course.getBuilding();
-			String room = course.getRoomNumber();
+			String location = course.getLocation();
 			String days = course.getDays();
-			double startTime = course.getStartCode();
-			double endTime = course.getEndCode();
+			double startTime = course.getStartTimeOne();
+			double endTime = course.getEndTimeOne();
 			startTime = distanceY * (startTime - timeDifference);
 			endTime = distanceY * (endTime - timeDifference);
 			Color rectangleColor = colorList.get(j);
 			j++;
-			plotClass(root, startTime, endTime, days, courseCode, courseName, faculty, building, room, rectangleColor);
+			plotClass(root, startTime, endTime, days, courseCode, courseName, faculty, location, rectangleColor);
+			
+			if (course.getStartTimeTwo() != 0) {
+				double startTimeTwo = course.getStartTimeTwo();
+				double endTimeTwo = course.getEndTimeTwo();
+				plotClass(root, startTimeTwo, endTimeTwo, days, courseCode, courseName, faculty, location, rectangleColor);
+			}
 			if(j == colorList.size()) {
 				j = 0;
 			}
@@ -116,41 +120,41 @@ public class Calendar {
 	 * @param days      - Days which class is held
 	 */
 	public void plotClass(Group root, double startTime, double endTime, String days, String courseCode,
-			String courseName, String professor, String building, String room, Color rectangleColor) {
+			String courseName, String professor, String location, Color rectangleColor) {
 
 		// If the class meets on Monday, the class rectangle and attributes are added to
 		// the grid
 		if (days.contains("M")) {
 			buildRectangle(root, startTime, endTime, xCordinatesMonday, rectangleColor);
-			plotAttributes(root, courseCode, courseName, professor, building, room, startTime, xCordinatesMonday);
+			plotAttributes(root, courseCode, courseName, professor, location, startTime, xCordinatesMonday);
 		}
 
 		// If the class meets on Tuesday, the class rectangle and attributes are added
 		// to the grid
 		if (days.contains("Tu")) {
 			buildRectangle(root, startTime, endTime, xCordinatesTuesday, rectangleColor);
-			plotAttributes(root, courseCode, courseName, professor, building, room, startTime, xCordinatesTuesday);
+			plotAttributes(root, courseCode, courseName, professor, location, startTime, xCordinatesTuesday);
 		}
 
 		// If the class meets on Wednesday, the class rectangle and attributes are added
 		// to the grid
 		if (days.contains("W")) {
 			buildRectangle(root, startTime, endTime, xCordinatesWednesday, rectangleColor);
-			plotAttributes(root, courseCode, courseName, professor, building, room, startTime, xCordinatesWednesday);
+			plotAttributes(root, courseCode, courseName, professor, location, startTime, xCordinatesWednesday);
 		}
 
 		// If the class meets on Thursday, the class rectangle and attributes are added
 		// to the grid
 		if (days.contains("Th")) {
 			buildRectangle(root, startTime, endTime, xCordinatesThursday, rectangleColor);
-			plotAttributes(root, courseCode, courseName, professor, building, room, startTime, xCordinatesThursday);
+			plotAttributes(root, courseCode, courseName, professor, location, startTime, xCordinatesThursday);
 		}
 
 		// If the class meets on Friday, the class rectangle and attributes are added to
 		// the grid
 		if (days.contains("F")) {
 			buildRectangle(root, startTime, endTime, xCordinatesFriday, rectangleColor);
-			plotAttributes(root, courseCode, courseName, professor, building, room, startTime, xCordinatesFriday);
+			plotAttributes(root, courseCode, courseName, professor, location, startTime, xCordinatesFriday);
 		}
 
 	}
@@ -168,33 +172,33 @@ public class Calendar {
 	 * @param startTime  - time when class starts
 	 * @param xCordOfDay - x coordinate of when class occurs
 	 */
-	public void plotAttributes(Group root, String courseCode, String courseName, String professor, String building,
-			String room, double start, double dayXCordinates) {
+	public void plotAttributes(Group root, String courseCode, String courseName, String faculty, String location,
+			double start, double dayXCordinates) {
 		start = start + distanceCourseY;
 		dayXCordinates = dayXCordinates + distanceCourseX;
-		Text course = new Text(courseCode);
-		Text subject = new Text(courseName);
-		Text faculty = new Text(professor);
-		Text location = new Text(building + ": " + room);
+		Text courseCodeText = new Text(courseCode);
+		Text courseNameText = new Text(courseName);
+		Text facultyText = new Text(faculty);
+		Text locationText = new Text(location);
 
-		course.setFill(Color.BLACK);
-		subject.setFill(Color.WHITE);
-		faculty.setFill(Color.BLACK);
-		location.setFill(Color.WHITE);
+		courseCodeText.setFill(Color.BLACK);
+		courseNameText.setFill(Color.WHITE);
+		facultyText.setFill(Color.BLACK);
+		locationText.setFill(Color.WHITE);
 
-		course.setX(dayXCordinates);
-		course.setY(start);
-		subject.setX(dayXCordinates);
-		subject.setY(start + courseDistance);
-		faculty.setX(dayXCordinates);
-		faculty.setY(start + 2 * courseDistance);
-		location.setX(dayXCordinates);
-		location.setY(start + 3 * courseDistance);
+		courseCodeText.setX(dayXCordinates);
+		courseCodeText.setY(start);
+		courseNameText.setX(dayXCordinates);
+		courseNameText.setY(start + courseDistance);
+		facultyText.setX(dayXCordinates);
+		facultyText.setY(start + 2 * courseDistance);
+		locationText.setX(dayXCordinates);
+		locationText.setY(start + 3 * courseDistance);
 
-		root.getChildren().add(course);
-		root.getChildren().add(subject);
-		root.getChildren().add(faculty);
-		root.getChildren().add(location);
+		root.getChildren().add(courseCodeText);
+		root.getChildren().add(courseNameText);
+		root.getChildren().add(facultyText);
+		root.getChildren().add(locationText);
 
 	}
 

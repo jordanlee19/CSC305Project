@@ -10,20 +10,18 @@ public class Course {
 	String courseName;
 	String startT = new String();
 	String endT = new String();
-	double startCode = 0.0;
-	double finishCode = 0.0;
 	double hourEndCode = 0.0;
 	double minuteEndCode = 0.0;
 	double hourStartCode = 0.0;
 	double minuteStartCode = 0.0;
-	String[] daysOne;
-	String[] daysTwo;
+	String daysOne;
+	String daysTwo;
 	String[] timeOne;
 	String[] timeTwo;
-	double startTimeNumOne;
-	double endTimeNumOne;
-	double startTimeNumTwo;
-	double endTimeNumTwo;
+	double startTimeOne;
+	double endTimeOne;
+	double startTimeTwo = 0;
+	double endTimeTwo = 0;
 
 	public Course() {
 		
@@ -40,7 +38,7 @@ public class Course {
 		if (courseList.size() == 11) {
 			facultyName = courseList.get(10);
 			location = courseList.get(8) + " " + courseList.get(9);
-			daysOne = courseList.get(5).split(" ");
+			daysOne = courseList.get(5);
 			timeOne = courseList.get(6).split(" - ");
 
 		}
@@ -48,22 +46,20 @@ public class Course {
 		if (courseList.size() == 12) {
 			facultyName = courseList.get(11);
 			location = courseList.get(9) + " " + courseList.get(10);
-			daysOne = courseList.get(5).split(" ");
-			daysTwo = courseList.get(7).split(" ");
+			daysOne = courseList.get(5);
+			daysTwo = courseList.get(7);
 			timeOne = courseList.get(6).split(" - ");
 			timeTwo = courseList.get(8).split(" - ");
 		}
 		
-		startTimeNumOne = makeStartTimeNum(timeOne[0]);
-		endTimeNumOne = makeEndTimeNum(timeOne[1]);
+		startTimeOne = makeStartTimeNum(timeOne[0]);
+		endTimeOne = makeEndTimeNum(timeOne[1]);
 		
 		if (timeTwo != null) {
-			startTimeNumTwo = makeStartTimeNum(timeTwo[0]);
-			endTimeNumTwo = makeStartTimeNum(timeTwo[1]);
+			startTimeTwo = makeStartTimeNum(timeTwo[0]);
+			endTimeTwo = makeStartTimeNum(timeTwo[1]);
 		}
 		
-		
-
 	}
 
 	public double makeStartTimeNum(String startTime) {
@@ -80,15 +76,15 @@ public class Course {
 		}
 		startMinutes = startMinutes / 60;
 
-		startCode = startHours + startMinutes;
+		double startTimeNum = startHours + startMinutes;
 		if (startTime.contains("PM") && startHours != 12) {
-			startCode = startCode + 12;
+			startTimeNum = startTimeNum + 12;
 			startHours = startHours + 12;
 		}
 
 		hourStartCode = startHours;
 		minuteStartCode = startMinutes;
-		return startCode;
+		return startTimeNum;
 	}
 
 	/**
@@ -97,32 +93,32 @@ public class Course {
 	 * @param end - the time the class comes to an end.
 	 * @return the time the class ends.
 	 */
-	public double makeEndTimeNum(String end) {
+	public double makeEndTimeNum(String endTime) {
 		int endHours = 0;
 		double endMinutes = 0;
-		if (end.substring(0, 2).contains("10") || end.substring(0, 2).contains("11")
-				|| end.substring(0, 2).contains("12")) {
-			endHours = Integer.parseInt(end.substring(0, 2));
-			endMinutes = Double.parseDouble(end.substring(3, 5));
+		if (endTime.substring(0, 2).contains("10") || endTime.substring(0, 2).contains("11")
+				|| endTime.substring(0, 2).contains("12")) {
+			endHours = Integer.parseInt(endTime.substring(0, 2));
+			endMinutes = Double.parseDouble(endTime.substring(3, 5));
 		} else  {
-			endHours = Integer.parseInt(end.substring(0, 1));
-			endMinutes = Double.parseDouble(end.substring(2, 4));
+			endHours = Integer.parseInt(endTime.substring(0, 1));
+			endMinutes = Double.parseDouble(endTime.substring(2, 4));
 		}
 		endMinutes = endMinutes / 60;
-;
-		finishCode = endHours + endMinutes;
-		if (endHours != 12 && end.contains("PM")) {
-			finishCode = finishCode + 12;
-			end = end + 12;
+
+		double endTimeNum = endHours + endMinutes;
+		if (endHours != 12 && endTime.contains("PM")) {
+			endTimeNum = endTimeNum + 12;
+			endHours = endHours + 12;
 		}
 
 		hourEndCode = endHours;
 		minuteEndCode = endMinutes;
-		return finishCode;
+		return endTimeNum;
 	}
 
 	/**
-	 *  Course name is obtained
+	 * Gives course name
 	 * 
 	 * @return course name
 	 */
@@ -131,42 +127,77 @@ public class Course {
 	}
 
 	/**
-	 * Gives course code e.g CSC 305
+	 * Gives course code 
 	 * 
-	 * @return String: class code
+	 * @return course code
 	 */
-	public String getClassCode() {
+	public String getCourseCode() {
 		return courseCode;
 	}
 
 	/**
-	 * Name of faculty member
+	 * Gives name of professor
 	 * 
-	 * @return professors name
+	 * @return faculty name
 	 */
 	public String getProfessor() {
 		return facultyName;
 	}
 
 	/**
-	 * Start Time
+	 * Gives location (building and room number)
 	 * 
-	 * @return the course start code: double 
+	 * @return location
 	 */
-	public double getStartCode() {
-
-		return startCode;
+	public String getLocation() {
+		return location;
+	}
+	
+	/**
+	 * Gives days of class
+	 * 
+	 * @return days
+	 */
+	public String getDays() {
+		return daysOne;
+	}
+	
+	/**
+	 * Gives start time of first set of times
+	 * 
+	 * @return start time one 
+	 */
+	public double getStartTimeOne() {
+		return startTimeOne;
 	}
 
 	/**
-	 * Class ending time
+	 * Gives ending time of first set of times
 	 * 
-	 * @return  double: course end code
+	 * @return  end time one
 	 */
-	public double getEndCode() {
-		return finishCode;
+	public double getEndTimeOne() {
+		return endTimeOne;
 	}
 
+	/**
+	 * Gives start time of second set of times
+	 * 
+	 * @return start time two 
+	 */
+	public double getStartTimeTwo() {
+		return startTimeTwo;
+	}
+
+	/**
+	 * Gives ending time of second set of times
+	 * 
+	 * @return  end time two
+	 */
+	public double getEndTimeTwo() {
+		return endTimeTwo;
+	}
+	
 	/**
 	 * Gives the hour of the start of class
 	 * 
@@ -211,21 +242,21 @@ public class Course {
 	 * @return if the courses conflict with each other
 	 */
 	public boolean compareTo(Course subject) {
-			if (this.startCode == subject.startCode) {
+			if (this.startTimeOne == subject.startTimeOne) {
 				return true;
-			} else if (this.finishCode == subject.finishCode) {
+			} else if (this.endTimeOne == subject.endTimeOne) {
 				return true;
-			} else if (this.startCode == subject.finishCode) {
+			} else if (this.startTimeOne == subject.endTimeOne) {
 				return true;
-			} else if (this.finishCode == subject.startCode) {
+			} else if (this.endTimeOne == subject.startTimeOne) {
 				return true;
-			} else if (this.startCode > subject.startCode && this.startCode < subject.finishCode) {
+			} else if (this.startTimeOne > subject.startTimeOne && this.startTimeOne < subject.endTimeOne) {
 				return true;
-			} else if (subject.startCode > this.startCode && subject.startCode < this.finishCode) {
+			} else if (subject.startTimeOne > this.startTimeOne && subject.startTimeOne < this.endTimeOne) {
 				return true;
-			} else if (this.finishCode > subject.startCode && this.finishCode < subject.finishCode) {
+			} else if (this.endTimeOne > subject.startTimeOne && this.endTimeOne < subject.endTimeOne) {
 				return true;
-			} else if (subject.finishCode > this.startCode && subject.finishCode < this.finishCode) {
+			} else if (subject.endTimeOne > this.startTimeOne && subject.endTimeOne < this.endTimeOne) {
 				return true;
 			} else {
 				return false;

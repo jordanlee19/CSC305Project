@@ -9,14 +9,15 @@ public class Schedule {
 	/**
 	 * Creates a program which parses the data entered by user.
 	 * 
-	 * @param schedule -list  of the input from main
+	 * @param schedule - array of schedule inputed in GraphicMain
 	 */
 	public Schedule(String[] schedule) {
 		ArrayList<String> courseCodeList = createCourseCodeList();
-		int courseNum = 0;
 		Map<Integer, ArrayList<String>> courseMap = createCourseMap();
 		ArrayList<Course> courseNameList = createCourseNameList();
-
+		int courseNum = 0;
+		
+		// Add course info to courseMap
 		for (String line : schedule) {
 			for (String code : courseCodeList) {
 				if (line.contains(code) && !line.contains("Lab")) {
@@ -26,6 +27,7 @@ public class Schedule {
 			(courseMap.get(courseNum)).add(line);
 		}
 		
+		// Add data to Course object(s), add Course object(s) to courseList
 		for (int i = 0; i < courseNum; i++) {
 			courseNameList.get(i).makeCourse(courseMap.get(i + 1));
 			courseList.add(courseNameList.get(i));

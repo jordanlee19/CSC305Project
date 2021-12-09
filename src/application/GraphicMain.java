@@ -7,7 +7,6 @@ import javafx.geometry.Pos;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -37,77 +36,35 @@ public class GraphicMain extends Application {
 			gridPaneMain.setHgap(15);
 			gridPaneMain.setVgap(15);
 
-			// Window title on top
-			Label wordLabel = new Label("Semester Schedule");
-			wordLabel.setFont(new Font("Times New Roman", 40));
-			gridPaneMain.add(wordLabel, 0, 0);
+			Label titleLabel = new Label("Semester Schedule");
+			titleLabel.setFont(new Font("Times New Roman", 40));
+			gridPaneMain.add(titleLabel, 0, 0);
 
-			Label schedule = new Label("Write Course Schedule Here:");
-			schedule.setFont(new Font("Times New Roman", 10));
-			gridPaneMain.add(schedule, 0, 1);
+			Label scheduleLabel = new Label("Write Course Schedule Here:");
+			scheduleLabel.setFont(new Font("Times New Roman", 10));
+			gridPaneMain.add(scheduleLabel, 0, 1);
 
-			// Text area
 			TextArea textField = new TextArea();
 			gridPaneMain.add(textField, 0, 2);
-
-			// Submit Button
+			
 			Button submit = new Button("Submit");
 			gridPaneMain.add(submit, 0, 3);
 
 			submit.setOnAction(value -> {
 
-				// Storing data from class schedule
-				String[] classSchedule = textField.getText().split("\n");
-				Schedule submittedCourseList = new Schedule(classSchedule);
-
-				ArrayList<Course> courses = submittedCourseList.getCourseList();
-				// Getting the initial course to check the remaining courses against
-				for (int courseIndex = 0; courseIndex < courses.size(); courseIndex++) {
-					Course course = courses.get(courseIndex);
-
-					// Going through each course to check against the initial course for any
-					// conflicts
-					for (int i = courseIndex + 1; i < courses.size(); i++) {
-
-						// Removing the checked course if identical to original course
-						if (course.equals(courses.get(i))) {
-							courses.remove(i);
-
-							// Adding any conflicting courses to a conflict list
-							// Setting hasConflicts to true to mark that the list has conflicts
-						} else if (course.compareTo(courses.get(i)) == true) {
-							listOfConflicts.add(course.getName() + " and " + courses.get(i).getName()
-									+ " class times overlap each other. Please remove this conflict and try again.");
-							conflictsFound = true;
-						}
-					}
-				}
+				// Storing data from class schedule into Schedule object
+				String[] scheduleArray = textField.getText().split("\n");
+				Schedule submittedSchedule = new Schedule(scheduleArray);
+				ArrayList<Course> courseList = submittedSchedule.getCourseList();
+				
+				Conflicts conflicts = new Conflicts(courseList);
+				conflictsFound = conflicts.getConflictStatus();
 
 				if (conflictsFound == true) {
-					Stage confStage = new Stage();
-					GridPane gridPane = new GridPane();
-					gridPane.setStyle("-fx-background-color: #FF0000;");
-					gridPane.setAlignment(Pos.CENTER);
-					Scene myScene = new Scene(gridPane, 900, 300);
-					myScene.setFill(Color.DARKRED);
-					confStage.setTitle("Error");
-					gridPane.setPadding(new Insets(10));
-					gridPane.setHgap(15);
-					gridPane.setVgap(15);
-
-					// Adds to the gridPane the conflicts occured and in which courses
-					int count = 0;
-					for (String conflict : listOfConflicts) {
-						gridPane.add(new Label(conflict), 0, count);
-						count++;
-
-						myScene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-						confStage.setScene(myScene);
-						confStage.show();
-					}
+					conflicts.conflictsFound().show();	
+				
 				} else {
-
-					Calendar calender = new Calendar(primaryStage, submittedCourseList);
+					Calendar calender = new Calendar(primaryStage, submittedSchedule);
 					calender.makeGrid();
 					calender.showStage();
 

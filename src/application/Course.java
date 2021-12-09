@@ -1,17 +1,12 @@
 package application;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 
 public class Course {
 
 	String courseCode;
 	String facultyName;
 	String location;
-	String building;
-	String room;
-	String days;
 	String courseName;
 	String startT = new String();
 	String endT = new String();
@@ -25,23 +20,13 @@ public class Course {
 	String[] daysTwo;
 	String[] timeOne;
 	String[] timeTwo;
+	double startTimeNumOne;
+	double endTimeNumOne;
+	double startTimeNumTwo;
+	double endTimeNumTwo;
 
 	public Course() {
 		
-	}
-	
-	public Course(String code, String course, String facultyMember, String building, String room, String startTime,
-			String endTime, String days) {
-		courseCode = code;
-		courseName = course;
-		this.facultyName = facultyMember;
-		this.building = building;
-		this.room = room;
-		this.startT = startTime;
-		this.endT = endTime;
-		this.days = days;
-		startCodes(startTime);
-		endCode(endTime);
 	}
 
 	public void makeCourse(ArrayList<String> courseList) {
@@ -50,50 +35,53 @@ public class Course {
 
 		if (courseList.size() == 7) {
 			facultyName = courseList.get(6);
-
 		}
 
 		if (courseList.size() == 11) {
 			facultyName = courseList.get(10);
-			// location = courseList.get(8) + " " + courseList.get(9);
-			building = courseList.get(8);
-			room = courseList.get(9);
+			location = courseList.get(8) + " " + courseList.get(9);
 			daysOne = courseList.get(5).split(" ");
-			days = daysOne.toString();
 			timeOne = courseList.get(6).split(" - ");
 
 		}
 
 		if (courseList.size() == 12) {
 			facultyName = courseList.get(11);
-			// location = courseList.get(9) + " " + courseList.get(10);
-			building = courseList.get(9);
-			room = courseList.get(10);
+			location = courseList.get(9) + " " + courseList.get(10);
 			daysOne = courseList.get(5).split(" ");
 			daysTwo = courseList.get(7).split(" ");
-			days = daysOne.toString() + daysTwo.toString();
 			timeOne = courseList.get(6).split(" - ");
 			timeTwo = courseList.get(8).split(" - ");
 		}
+		
+		startTimeNumOne = makeStartTimeNum(timeOne[0]);
+		endTimeNumOne = makeEndTimeNum(timeOne[1]);
+		
+		if (timeTwo != null) {
+			startTimeNumTwo = makeStartTimeNum(timeTwo[0]);
+			endTimeNumTwo = makeStartTimeNum(timeTwo[1]);
+		}
+		
+		
 
 	}
 
-	private double startCodes(String starts) {
+	public double makeStartTimeNum(String startTime) {
 		int startHours = 0;
 		double startMinutes = 0;
-		if (starts.substring(0, 2).contains("10") || starts.substring(0, 2).contains("11")
-				|| starts.substring(0, 2).contains("12")) {
-			startHours = Integer.parseInt(starts.substring(0, 2));
-			startMinutes = Double.parseDouble(starts.substring(3, 5));
+		if (startTime.substring(0, 2).contains("10") || startTime.substring(0, 2).contains("11")
+				|| startTime.substring(0, 2).contains("12")) {
+			startHours = Integer.parseInt(startTime.substring(0, 2));
+			startMinutes = Double.parseDouble(startTime.substring(3, 5));
 		} else {
 
-			startHours = Integer.parseInt(starts.substring(0, 1));
-			startMinutes = Double.parseDouble(starts.substring(2, 4));
+			startHours = Integer.parseInt(startTime.substring(0, 1));
+			startMinutes = Double.parseDouble(startTime.substring(2, 4));
 		}
 		startMinutes = startMinutes / 60;
 
 		startCode = startHours + startMinutes;
-		if (starts.contains("PM") && startHours != 12) {
+		if (startTime.contains("PM") && startHours != 12) {
 			startCode = startCode + 12;
 			startHours = startHours + 12;
 		}
@@ -109,7 +97,7 @@ public class Course {
 	 * @param end - the time the class comes to an end.
 	 * @return the time the class ends.
 	 */
-	private double endCode(String end) {
+	public double makeEndTimeNum(String end) {
 		int endHours = 0;
 		double endMinutes = 0;
 		if (end.substring(0, 2).contains("10") || end.substring(0, 2).contains("11")
@@ -158,33 +146,6 @@ public class Course {
 	 */
 	public String getProfessor() {
 		return facultyName;
-	}
-
-	/**
-	 * Location of Class
-	 * 
-	 * @return String: building name
-	 */
-	public String getBuilding() {
-		return building;
-	}
-
-	/**
-	 * Room number of class
-	 * 
-	 * @return String: room number
-	 */
-	public String getRoomNumber() {
-		return room;
-	}
-
-	/**
-	 * days course is taught
-	 * 
-	 * @return String: Course days
-	 */
-	public String getDays() {
-		return days;
 	}
 
 	/**
@@ -242,29 +203,6 @@ public class Course {
 		return minuteEndCode;
 	}
 
-	@Override
-	public boolean equals(Object object) {
-		if (object == this) {
-			return true;
-		}
-
-		if (!(object instanceof Course)) {
-			return false;
-		}
-
-		Course other = (Course) object;
-
-		if (this.courseCode.equals(other.courseCode) && this.courseName.equals(other.courseName)
-				&& this.startT.equals(other.startT) && this.endT.equals(other.endT) && this.days.equals(other.days)
-				&& this.facultyName.equals(other.facultyName) && this.building.equals(other.building)
-				&& this.room.equals(other.room) && this.startCode == other.startCode
-				&& this.finishCode == other.finishCode) {
-			return true;
-		} else {
-			return false;
-		}
-	}
-
 	/**
 	 * Compares if course timing
 	 * overlaps.
@@ -296,7 +234,7 @@ public class Course {
 
 	@Override
 	public String toString() {
-		return courseCode + ", " + courseName + ", " + building + ", " + room + ", " + facultyName + ", " + startT + ", " + endT + ", " + days;
+		return courseCode + ", " + courseName + ", " + location + ", " + facultyName + ", " + startT + ", " + endT;
 
 	}
 

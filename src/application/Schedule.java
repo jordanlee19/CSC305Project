@@ -2,7 +2,7 @@ package application;
 
 import java.util.*;
 
-public class ScheduleMaker {
+public class Schedule {
 
 	ArrayList<Course> courseList = new ArrayList<Course>();
 
@@ -11,7 +11,7 @@ public class ScheduleMaker {
 	 * 
 	 * @param schedule -list  of the input from main
 	 */
-	public ScheduleMaker(String[] schedule) {
+	public Schedule(String[] schedule) {
 		ArrayList<String> courseCodeList = createCourseCodeList();
 		int courseNum = 0;
 		Map<Integer, ArrayList<String>> courseMap = createCourseMap();

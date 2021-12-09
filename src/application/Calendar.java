@@ -12,7 +12,7 @@ import javafx.stage.Stage;
 public class Calendar {
 
 	Stage primaryStage;
-	ScheduleMaker CourseList;
+	Schedule CourseList;
 	int timeDifference = 7;
 	int distanceY = 50;
 	static int XCOORD_M = 100;
@@ -25,7 +25,7 @@ public class Calendar {
 	int distanceCourseY = 15;
 	int distanceCourseX = 15;
 
-	public Calendar(Stage primaryStage, ScheduleMaker CourseList) {
+	public Calendar(Stage primaryStage, Schedule CourseList) {
 		this.primaryStage = primaryStage;
 		this.CourseList = CourseList;
 	}

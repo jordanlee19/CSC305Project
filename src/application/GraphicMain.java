@@ -58,7 +58,7 @@ public class GraphicMain extends Application {
 
 				// Storing data from class schedule
 				String[] classSchedule = textField.getText().split("\n");
-				ScheduleMaker submittedCourseList = new ScheduleMaker(classSchedule);
+				Schedule submittedCourseList = new Schedule(classSchedule);
 
 				ArrayList<Course> courses = submittedCourseList.getCourseList();
 				// Getting the initial course to check the remaining courses against

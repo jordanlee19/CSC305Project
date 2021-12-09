@@ -15,11 +15,11 @@ public class Calendar {
 	ScheduleMaker CourseList;
 	int timeDifference = 7;
 	int distanceY = 50;
-	int xCordinatesMonday = 100;
-	int xCordinatesTuesday = 300;
-	int xCordinatesWednesday = 500;
-	int xCordinatesThursday = 700;
-	int xCordinatesFriday = 900;
+	static int XCOORD_M = 100;
+	static int XCOORD_TU = 300;
+	static int XCOORD_W = 500;
+	static int XCOORD_TH = 700;
+	static int XCOORD_F = 900;
 	int dayDistance = 200;
 	int courseDistance = 15;
 	int distanceCourseY = 15;
@@ -34,9 +34,8 @@ public class Calendar {
 		Group root = new Group();
 		Scene scene = new Scene(root, 1100, 800);
 		
-
-		this.days(root);
-		this.times(root);
+		this.addDays(root);
+		this.addTimes(root);
 		this.addLines(root);
 		courseListRectangle(root);
 
@@ -49,9 +48,9 @@ public class Calendar {
 
 	public void courseListRectangle(Group root) {
 		ArrayList<Course> courseList = new ArrayList<Course>();
-
-		ArrayList<Color> colorList = new ArrayList<Color>();
 		courseList = CourseList.getCourseList();
+		
+		ArrayList<Color> colorList = new ArrayList<Color>();
 		colorList.add(Color.MAROON);
 		colorList.add(Color.PURPLE);
 		colorList.add(Color.SEAGREEN);
@@ -68,20 +67,20 @@ public class Calendar {
 		// generating a random color
 		// of the rectangle of the course
 
-		int j = 0;
+		int i = 0;
 		
 		for (Course course : courseList) {
 			String courseCode = course.getCourseCode();
 			String courseName = course.getName();
-			String faculty = course.getProfessor();
+			String faculty = course.getFaculty();
 			String location = course.getLocation();
 			String days = course.getDays();
 			double startTime = course.getStartTimeOne();
 			double endTime = course.getEndTimeOne();
 			startTime = distanceY * (startTime - timeDifference);
 			endTime = distanceY * (endTime - timeDifference);
-			Color rectangleColor = colorList.get(j);
-			j++;
+			Color rectangleColor = colorList.get(i);
+			i++;
 			plotClass(root, startTime, endTime, days, courseCode, courseName, faculty, location, rectangleColor);
 			
 			if (course.getStartTimeTwo() != 0) {
@@ -89,8 +88,8 @@ public class Calendar {
 				double endTimeTwo = course.getEndTimeTwo();
 				plotClass(root, startTimeTwo, endTimeTwo, days, courseCode, courseName, faculty, location, rectangleColor);
 			}
-			if(j == colorList.size()) {
-				j = 0;
+			if(i == colorList.size()) {
+				i = 0;
 			}
 			
 		}
@@ -125,36 +124,36 @@ public class Calendar {
 		// If the class meets on Monday, the class rectangle and attributes are added to
 		// the grid
 		if (days.contains("M")) {
-			buildRectangle(root, startTime, endTime, xCordinatesMonday, rectangleColor);
-			plotAttributes(root, courseCode, courseName, professor, location, startTime, xCordinatesMonday);
+			buildRectangle(root, startTime, endTime, XCOORD_M, rectangleColor);
+			plotAttributes(root, courseCode, courseName, professor, location, startTime, XCOORD_M);
 		}
 
 		// If the class meets on Tuesday, the class rectangle and attributes are added
 		// to the grid
 		if (days.contains("Tu")) {
-			buildRectangle(root, startTime, endTime, xCordinatesTuesday, rectangleColor);
-			plotAttributes(root, courseCode, courseName, professor, location, startTime, xCordinatesTuesday);
+			buildRectangle(root, startTime, endTime, XCOORD_TU, rectangleColor);
+			plotAttributes(root, courseCode, courseName, professor, location, startTime, XCOORD_TU);
 		}
 
 		// If the class meets on Wednesday, the class rectangle and attributes are added
 		// to the grid
 		if (days.contains("W")) {
-			buildRectangle(root, startTime, endTime, xCordinatesWednesday, rectangleColor);
-			plotAttributes(root, courseCode, courseName, professor, location, startTime, xCordinatesWednesday);
+			buildRectangle(root, startTime, endTime, XCOORD_W, rectangleColor);
+			plotAttributes(root, courseCode, courseName, professor, location, startTime, XCOORD_W);
 		}
 
 		// If the class meets on Thursday, the class rectangle and attributes are added
 		// to the grid
 		if (days.contains("Th")) {
-			buildRectangle(root, startTime, endTime, xCordinatesThursday, rectangleColor);
-			plotAttributes(root, courseCode, courseName, professor, location, startTime, xCordinatesThursday);
+			buildRectangle(root, startTime, endTime, XCOORD_TH, rectangleColor);
+			plotAttributes(root, courseCode, courseName, professor, location, startTime, XCOORD_TH);
 		}
 
 		// If the class meets on Friday, the class rectangle and attributes are added to
 		// the grid
 		if (days.contains("F")) {
-			buildRectangle(root, startTime, endTime, xCordinatesFriday, rectangleColor);
-			plotAttributes(root, courseCode, courseName, professor, location, startTime, xCordinatesFriday);
+			buildRectangle(root, startTime, endTime, XCOORD_F, rectangleColor);
+			plotAttributes(root, courseCode, courseName, professor, location, startTime, XCOORD_F);
 		}
 
 	}
@@ -208,136 +207,39 @@ public class Calendar {
 	 * @param root - Group where all the data for week day and times are held
 	 * @return - Group root
 	 */
-	public Group days(Group root) {
-		Text monday = new Text();
-		monday.setText("Monday");
-		monday.setX(170);
-		monday.setY(25);
-		root.getChildren().add(monday);
-
-		Text tuesday = new Text();
-		tuesday.setText("Tuesday");
-		tuesday.setX(370);
-		tuesday.setY(25);
-		root.getChildren().add(tuesday);
-
-		Text wednesday = new Text();
-		wednesday.setText("Wednesday");
-		wednesday.setX(570);
-		wednesday.setY(25);
-		root.getChildren().add(wednesday);
-
-		Text thursday = new Text();
-		thursday.setText("Thursday");
-		thursday.setX(770);
-		thursday.setY(25);
-		root.getChildren().add(thursday);
-
-		Text friday = new Text();
-		friday.setText("Friday");
-		friday.setX(970);
-		friday.setY(25);
-		root.getChildren().add(friday);
+	public Group addDays(Group root) {
+		String[] daysList = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday"};
+		int xCoord = 170;		
+		for (int i = 0; i < 5; i++) {
+			Text text = new Text();
+			text.setText(daysList[i]);
+			text.setX(xCoord);
+			text.setY(25);
+			root.getChildren().add(text);
+			xCoord+=200;
+		}
 
 		return root;
 	}
 
 	/**
-	 * Adds all the times starting at 8am to 6pm hourly to the Group root
+	 * Adds all the times starting at 8am to 10pm hourly to the Group root
 	 * 
 	 * @param root - Group where all the data for week day and times are held
 	 * @return - Group root
 	 */
-	public Group times(Group root) {
-		Text t1 = new Text();
-		t1.setText("8am");
-		t1.setX(25);
-		t1.setY(50);
-		root.getChildren().add(t1);
-
-		Text t2 = new Text();
-		t2.setText("9am");
-		t2.setX(25);
-		t2.setY(100);
-		root.getChildren().add(t2);
-
-		Text t3 = new Text();
-		t3.setText("10am");
-		t3.setX(25);
-		t3.setY(150);
-		root.getChildren().add(t3);
-
-		Text t4 = new Text();
-		t4.setText("11am");
-		t4.setX(25);
-		t4.setY(200);
-		root.getChildren().add(t4);
-
-		Text t5 = new Text();
-		t5.setText("12pm");
-		t5.setX(25);
-		t5.setY(250);
-		root.getChildren().add(t5);
-
-		Text t6 = new Text();
-		t6.setText("1pm");
-		t6.setX(25);
-		t6.setY(300);
-		root.getChildren().add(t6);
-
-		Text t7 = new Text();
-		t7.setText("2pm");
-		t7.setX(25);
-		t7.setY(350);
-		root.getChildren().add(t7);
-
-		Text t8 = new Text();
-		t8.setText("3pm");
-		t8.setX(25);
-		t8.setY(400);
-		root.getChildren().add(t8);
-
-		Text t9 = new Text();
-		t9.setText("4pm");
-		t9.setX(25);
-		t9.setY(450);
-		root.getChildren().add(t9);
-
-		Text t10 = new Text();
-		t10.setText("5pm");
-		t10.setX(25);
-		t10.setY(500);
-		root.getChildren().add(t10);
-
-		Text t11 = new Text();
-		t11.setText("6pm");
-		t11.setX(25);
-		t11.setY(550);
-		root.getChildren().add(t11);
-		
-		Text t12 = new Text();
-		t12.setText("7pm");
-		t12.setX(25);
-		t12.setY(600);
-		root.getChildren().add(t12);
-		
-		Text t13 = new Text();
-		t13.setText("8pm");
-		t13.setX(25);
-		t13.setY(650);
-		root.getChildren().add(t13);
-		
-		Text t14 = new Text();
-		t14.setText("9pm");
-		t14.setX(25);
-		t14.setY(700);
-		root.getChildren().add(t14);
-		
-		Text t15 = new Text();
-		t15.setText("10pm");
-		t15.setX(25);
-		t15.setY(750);
-		root.getChildren().add(t15);
+	public Group addTimes(Group root) {
+		String[] timesList = {"8am", "9am", "10am", "11am", "12pm", "1pm", "2pm", "3pm", "4pm", "5pm",
+				"6pm", "7pm", "8pm", "9pm", "10pm"};
+		int yCoord = 50;
+		for (int i = 0; i < 15; i++) {
+			Text text = new Text();
+			text.setText(timesList[i]);
+			text.setX(25);
+			text.setY(yCoord);
+			root.getChildren().add(text);
+			yCoord+=50;
+		}
 
 		return root;
 	}

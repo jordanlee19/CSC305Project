@@ -140,7 +140,7 @@ public class Course {
 	 * 
 	 * @return faculty name
 	 */
-	public String getProfessor() {
+	public String getFaculty() {
 		return facultyName;
 	}
 

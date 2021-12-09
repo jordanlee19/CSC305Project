@@ -32,7 +32,7 @@ public class Course {
 		courseName = courseList.get(1);
 
 		if (courseList.size() == 7) {
-			facultyName = courseList.get(6);
+			return;
 		}
 
 		if (courseList.size() == 11) {
@@ -154,12 +154,21 @@ public class Course {
 	}
 	
 	/**
-	 * Gives days of class
+	 * Gives first set of days
 	 * 
-	 * @return days
+	 * @return days one
 	 */
-	public String getDays() {
+	public String getDaysOne() {
 		return daysOne;
+	}
+	
+	/**
+	 * Gives second set of days
+	 * 
+	 * @return days two
+	 */
+	public String getDaysTwo() {
+		return daysTwo;
 	}
 	
 	/**

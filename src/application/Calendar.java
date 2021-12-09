@@ -74,7 +74,7 @@ public class Calendar {
 			String courseName = course.getName();
 			String faculty = course.getFaculty();
 			String location = course.getLocation();
-			String days = course.getDays();
+			String days = course.getDaysOne();
 			double startTime = course.getStartTimeOne();
 			double endTime = course.getEndTimeOne();
 			startTime = distanceY * (startTime - timeDifference);
@@ -83,10 +83,13 @@ public class Calendar {
 			i++;
 			plotClass(root, startTime, endTime, days, courseCode, courseName, faculty, location, rectangleColor);
 			
-			if (course.getStartTimeTwo() != 0) {
+			if (course.getDaysTwo() != null) {
+				String daysTwo = course.getDaysTwo();
 				double startTimeTwo = course.getStartTimeTwo();
 				double endTimeTwo = course.getEndTimeTwo();
-				plotClass(root, startTimeTwo, endTimeTwo, days, courseCode, courseName, faculty, location, rectangleColor);
+				startTimeTwo = distanceY * (startTimeTwo - timeDifference);
+				endTimeTwo = distanceY * (endTimeTwo - timeDifference);
+				plotClass(root, startTimeTwo, endTimeTwo, daysTwo, courseCode, courseName, faculty, location, rectangleColor);
 			}
 			if(i == colorList.size()) {
 				i = 0;

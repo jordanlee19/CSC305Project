@@ -8,13 +8,9 @@ import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
-import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 
 public class GraphicMain extends Application {
-
-	private ArrayList<String> listOfConflicts = new ArrayList<String>();
-	private boolean conflictsFound = false;
 
 	@Override
 	public void start(Stage primaryStage) {
@@ -58,7 +54,7 @@ public class GraphicMain extends Application {
 				ArrayList<Course> courseList = submittedSchedule.getCourseList();
 				
 				Conflicts conflicts = new Conflicts(courseList);
-				conflictsFound = conflicts.getConflictStatus();
+				boolean conflictsFound = conflicts.getConflictStatus();
 
 				if (conflictsFound == true) {
 					conflicts.conflictsFound().show();	

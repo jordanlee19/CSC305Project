@@ -26,17 +26,17 @@ public class GraphicMain extends Application {
 			GridPane gridPaneMain = new GridPane();
 			gridPaneMain.setAlignment(Pos.CENTER);
 			Scene scene = new Scene(gridPaneMain, 1100, 800);
-			primaryStage.setTitle("Schedule Maker");
+			primaryStage.setTitle("Schedule Visualizer");
 
 			gridPaneMain.setPadding(new Insets(10));
 			gridPaneMain.setHgap(15);
 			gridPaneMain.setVgap(15);
 
-			Label titleLabel = new Label("Semester Schedule");
+			Label titleLabel = new Label("Schedule Visualizer");
 			titleLabel.setFont(new Font("Times New Roman", 40));
 			gridPaneMain.add(titleLabel, 0, 0);
 
-			Label scheduleLabel = new Label("Write Course Schedule Here:");
+			Label scheduleLabel = new Label("Write course schedule here:");
 			scheduleLabel.setFont(new Font("Times New Roman", 20));
 			gridPaneMain.add(scheduleLabel, 0, 1);
 

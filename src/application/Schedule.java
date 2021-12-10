@@ -30,7 +30,9 @@ public class Schedule {
 		// Add data to Course object(s), add Course object(s) to courseList
 		for (int i = 0; i < courseNum; i++) {
 			courseNameList.get(i).makeCourse(courseMap.get(i + 1));
-			courseList.add(courseNameList.get(i));
+			if (courseNameList.get(i).getDaysOne() != null) {
+				courseList.add(courseNameList.get(i));
+			}
 		}
 		
 	}

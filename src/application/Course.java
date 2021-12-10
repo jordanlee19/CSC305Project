@@ -28,13 +28,13 @@ public class Course {
 	}
 
 	public void makeCourse(ArrayList<String> courseList) {
-		courseCode = courseList.get(0);
-		courseName = courseList.get(1);
-
 		if (courseList.size() == 7) {
 			return;
 		}
-
+		
+		courseCode = courseList.get(0);
+		courseName = courseList.get(1);
+		
 		if (courseList.size() == 11) {
 			facultyName = courseList.get(10);
 			location = courseList.get(8) + " " + courseList.get(9);

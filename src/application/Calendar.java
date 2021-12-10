@@ -68,13 +68,11 @@ public class Calendar {
 		colorList.add(Color.MAROON);
 		colorList.add(Color.PURPLE);
 		colorList.add(Color.SEAGREEN);
+		colorList.add(Color.BLUE);
 		colorList.add(Color.YELLOWGREEN);
-		colorList.add(Color.AQUA);
-		colorList.add(Color.AZURE);
-		colorList.add(Color.CYAN);
 		colorList.add(Color.GREY);
-		colorList.add(Color.CHOCOLATE);
 		colorList.add(Color.GREEN);
+		colorList.add(Color.CHOCOLATE);
 		
 
 		// For each course, the class attributes are printed onto the grid along with
@@ -206,10 +204,10 @@ public class Calendar {
 		Text facultyText = new Text(faculty);
 		Text locationText = new Text(location);
 
-		courseCodeText.setFill(Color.BLACK);
-		courseNameText.setFill(Color.WHITE);
-		facultyText.setFill(Color.BLACK);
-		locationText.setFill(Color.WHITE);
+		courseCodeText.setFill(Color.WHITE);
+		courseNameText.setFill(Color.BLACK);
+		facultyText.setFill(Color.WHITE);
+		locationText.setFill(Color.BLACK);
 
 		courseCodeText.setX(dayXCordinates);
 		courseCodeText.setY(start);

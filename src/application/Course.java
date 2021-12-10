@@ -261,22 +261,22 @@ public class Course {
 	 * @param other - the course being compared
 	 * @return if the courses conflict with each other
 	 */
-	public boolean compareTo(Course other) {
-			if (this.startTimeOne == other.startTimeOne) {
+	public boolean compareTo(double thisStartTime, double thisEndTime, double otherStartTime, double otherEndTime) {
+			if (thisStartTime == otherStartTime) {
 				return true;
-			} else if (this.endTimeOne == other.endTimeOne) {
+			} else if (thisEndTime == otherEndTime) {
 				return true;
-			} else if (this.startTimeOne == other.endTimeOne) {
+			} else if (thisStartTime == otherEndTime) {
 				return true;
-			} else if (this.endTimeOne == other.startTimeOne) {
+			} else if (thisEndTime == otherStartTime) {
 				return true;
-			} else if (this.startTimeOne > other.startTimeOne && this.startTimeOne < other.endTimeOne) {
+			} else if (thisStartTime > otherStartTime && thisStartTime < otherEndTime) {
 				return true;
-			} else if (other.startTimeOne > this.startTimeOne && other.startTimeOne < this.endTimeOne) {
+			} else if (otherStartTime > thisStartTime && otherStartTime < thisEndTime) {
 				return true;
-			} else if (this.endTimeOne > other.startTimeOne && this.endTimeOne < other.endTimeOne) {
+			} else if (thisEndTime > otherStartTime && thisEndTime < otherEndTime) {
 				return true;
-			} else if (other.endTimeOne > this.startTimeOne && other.endTimeOne < this.endTimeOne) {
+			} else if (otherEndTime > thisStartTime && otherEndTime < thisEndTime) {
 				return true;
 			} else {
 				return false;

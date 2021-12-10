@@ -30,11 +30,65 @@ public class Conflicts {
 			// Going through each course to check against the initial course for any
 			// conflicts
 			for (int j = i + 1; j < courseList.size(); j++) {
-				if (course.compareTo(courseList.get(j)) == true) {
-					listOfConflicts.add(course.getName() + " and " + courseList.get(j).getName()
+				Course other = courseList.get(j);
+				if (course.getDaysOne().contains("M") && other.getDaysOne().contains("M") ||
+					course.getDaysOne().contains("Tu") && other.getDaysOne().contains("Tu") ||
+					course.getDaysOne().contains("W") && other.getDaysOne().contains("W") ||
+					course.getDaysOne().contains("Th") && other.getDaysOne().contains("Th") ||
+					course.getDaysOne().contains("F") && other.getDaysOne().contains("F")) {
+					
+					if (course.compareTo(course.getStartTimeOne(), course.getEndTimeOne(),
+							other.getStartTimeOne(), other.getEndTimeOne()) == true) {
+						listOfConflicts.add(course.getName() + " and " + other.getName()
 							+ " class times overlap each other. Please remove this conflict and try again.");
-					conflictsFound = true;
+						conflictsFound = true;
+					}
 				}
+				if (course.getDaysTwo() != null) {
+					if (course.getDaysTwo().contains("M") && other.getDaysOne().contains("M") ||
+						course.getDaysTwo().contains("Tu") && other.getDaysOne().contains("Tu") ||
+						course.getDaysTwo().contains("W") && other.getDaysOne().contains("W") ||
+						course.getDaysTwo().contains("Th") && other.getDaysOne().contains("Th") ||
+						course.getDaysTwo().contains("F") && other.getDaysOne().contains("F")) {
+						
+						if (course.compareTo(course.getStartTimeTwo(), course.getEndTimeTwo(),
+								other.getStartTimeOne(), other.getEndTimeOne()) == true) {
+							listOfConflicts.add(course.getName() + " and " + other.getName()
+								+ " class times overlap each other. Please remove this conflict and try again.");
+							conflictsFound = true;
+						}
+					}
+				}
+				if (other.getDaysTwo() != null) {
+					if (course.getDaysOne().contains("M") && other.getDaysTwo().contains("M") ||
+						course.getDaysOne().contains("Tu") && other.getDaysTwo().contains("Tu") ||
+						course.getDaysOne().contains("W") && other.getDaysTwo().contains("W") ||
+						course.getDaysOne().contains("Th") && other.getDaysTwo().contains("Th") ||
+						course.getDaysOne().contains("F") && other.getDaysTwo().contains("F")) {
+							
+						if (course.compareTo(course.getStartTimeOne(), course.getEndTimeOne(),
+								other.getStartTimeTwo(), other.getEndTimeTwo()) == true) {
+							listOfConflicts.add(course.getName() + " and " + other.getName()
+								+ " class times overlap each other. Please remove this conflict and try again.");
+							conflictsFound = true;
+						}
+					}
+					if (course.getDaysTwo() != null) {
+						if (course.getDaysTwo().contains("M") && other.getDaysTwo().contains("M") ||
+							course.getDaysTwo().contains("Tu") && other.getDaysTwo().contains("Tu") ||
+							course.getDaysTwo().contains("W") && other.getDaysTwo().contains("W") ||
+							course.getDaysTwo().contains("Th") && other.getDaysTwo().contains("Th") ||
+							course.getDaysTwo().contains("F") && other.getDaysTwo().contains("F")) {
+									
+							if (course.compareTo(course.getStartTimeTwo(), course.getEndTimeTwo(),
+									other.getStartTimeTwo(), other.getEndTimeTwo()) == true) {
+								listOfConflicts.add(course.getName() + " and " + other.getName()
+									+ " class times overlap each other. Please remove this conflict and try again.");
+								conflictsFound = true;
+							}
+						}
+					}
+				}	
 			}
 		}
 	}

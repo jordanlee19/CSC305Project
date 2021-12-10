@@ -37,7 +37,7 @@ public class GraphicMain extends Application {
 			gridPaneMain.add(titleLabel, 0, 0);
 
 			Label scheduleLabel = new Label("Write Course Schedule Here:");
-			scheduleLabel.setFont(new Font("Times New Roman", 10));
+			scheduleLabel.setFont(new Font("Times New Roman", 20));
 			gridPaneMain.add(scheduleLabel, 0, 1);
 
 			TextArea textField = new TextArea();

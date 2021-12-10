@@ -26,6 +26,12 @@ public class Course {
 	public Course() {
 		
 	}
+	
+	/**
+	 * The makeCourse method checks the number of lines occupied by one course information 
+	 * and based on the size, it extract the relevant information required for making the calendar.
+	 * @param courseList- location of the course  
+	 */
 
 	public void makeCourse(ArrayList<String> courseList) {
 		if (courseList.size() == 7) {
@@ -61,6 +67,11 @@ public class Course {
 		}
 		
 	}
+	
+	/**
+	 * The makeStartTimeNum method is created to judge conflicts based on the startTime of a course
+	 * @param startTime- The time when a course period starts  
+	 */
 
 	public double makeStartTimeNum(String startTime) {
 		int startHours = 0;

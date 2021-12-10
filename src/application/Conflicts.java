@@ -15,6 +15,12 @@ public class Conflicts {
 	private ArrayList<String> listOfConflicts = new ArrayList<String>();
 	private boolean conflictsFound = false;
 
+	/**
+	 * The conflicts method takes an ArrayList of course as parameter
+	 * and compares one initial course to another course and if an overlap is observed it notifies
+	 * the user about the conflict in the courses and prompts the user to remove the conflict and retry.
+	 * @param courseList- location of the course  
+	 */
 	
 	public Conflicts(ArrayList<Course> courseList) {
 		// Getting the initial course to check the remaining courses against
@@ -33,6 +39,9 @@ public class Conflicts {
 		}
 	}
 	
+	/**
+	 * This boolean method acts as a helper method for conflictsFound method.
+	 */
 	public boolean getConflictStatus() {
 		return conflictsFound;
 	}

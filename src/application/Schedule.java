@@ -7,8 +7,7 @@ public class Schedule {
 	ArrayList<Course> courseList = new ArrayList<Course>();
 
 	/**
-	 * Creates a program which parses the data entered by user.
-	 * 
+	 * 	This method Creates a program which parses the data entered by user.
 	 * @param schedule - array of schedule inputed in GraphicMain
 	 */
 	public Schedule(String[] schedule) {
@@ -26,7 +25,6 @@ public class Schedule {
 			}
 			(courseMap.get(courseNum)).add(line);
 		}
-		
 		// Add data to Course object(s), add Course object(s) to courseList
 		for (int i = 0; i < courseNum; i++) {
 			courseNameList.get(i).makeCourse(courseMap.get(i + 1));
@@ -51,7 +49,7 @@ public class Schedule {
 	}
 
 	/**
-	 * Creates an ArrayList<String> of all the course codes
+	 * Creates an ArrayList<String> of all the course codes. This course codes were taken from Arches.
 	 * 
 	 * @return an ArrayList<String> of course codes
 	 */
@@ -67,7 +65,7 @@ public class Schedule {
 	}
 
 	/**
-	 * Creates an ArrayList<String> of the campus buildings
+	 * It Creates an ArrayList<String> of the campus buildings
 	 * 
 	 * @return ArrayList<String> of Buildings
 	 */
@@ -95,6 +93,12 @@ public class Schedule {
 		list.add("ANNX");
 		return list;
 	}
+	/**
+	 * It creates an ArrayList of string for 11 potential courses and then
+	 * maps it based on the specified value with the specified key in courseMap
+	 * 
+	 * @return courseMap
+	 */
 	
 	public Map<Integer, ArrayList<String>> createCourseMap() {
 		ArrayList<String> courseOne = new ArrayList<String>();
@@ -124,6 +128,12 @@ public class Schedule {
 		
 		return courseMap;
 	}
+	/**
+	 * It creates new objects of type course for each of the 11 potential courses and 
+	 * then adds them into an ArrayList of type Course
+	 * 
+	 * @return courseNameList
+	 */
 	
 	public ArrayList<Course> createCourseNameList() {
 		Course courseOneObj = new Course();

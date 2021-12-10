@@ -24,12 +24,19 @@ public class Calendar {
 	int courseDistance = 15;
 	int distanceCourseY = 15;
 	int distanceCourseX = 15;
-
+	
+	/**
+	 * This constructor method is responsible for initializing the primaryStage and the courseList
+	 * @param primaryStage
+	 * @param CourseList
+	 */
 	public Calendar(Stage primaryStage, Schedule CourseList) {
 		this.primaryStage = primaryStage;
 		this.CourseList = CourseList;
 	}
-
+	/**
+	 * This method executes to makes a grid to create a calendar to add courses
+	 */
 	public void makeGrid() {
 		Group root = new Group();
 		Scene scene = new Scene(root, 1100, 800);
@@ -41,11 +48,18 @@ public class Calendar {
 
 		primaryStage.setScene(scene);
 	}
-
+	/**
+	 * This method displays the primary stage.
+	 */
 	public void showStage() {
 		primaryStage.show();
 	}
-
+	/**
+	 * The courseListRecangle method gets the attribute of courses from the course list
+	 *  and uses the plot method to plot the rectangle containing the course it
+	 *  also chooses a color from the color list for the rectangle 
+	 * @param root- location of the course
+	 */
 	public void courseListRectangle(Group root) {
 		ArrayList<Course> courseList = new ArrayList<Course>();
 		courseList = CourseList.getCourseList();
@@ -97,7 +111,15 @@ public class Calendar {
 			
 		}
 	}
-
+	
+	/**
+	 * This method builds the rectangle plots the courses and adds the color using the setFill()
+	 * @param root- location of the course 
+	 * @param startTime- start time of the course
+	 * @param endTime	- end time of the course
+	 * @param dayXCordinates - co-ordinates of the day
+	 * @param color	- the color of the rectangle 
+	 */
 	public void buildRectangle(Group root, double startTime, double endTime, double xCordOfDay, Color color) {
 		Rectangle rectangle = new Rectangle();
 		rectangle.setX(xCordOfDay);
@@ -130,6 +152,7 @@ public class Calendar {
 			buildRectangle(root, startTime, endTime, XCOORD_M, rectangleColor);
 			plotAttributes(root, courseCode, courseName, professor, location, startTime, XCOORD_M);
 		}
+		
 
 		// If the class meets on Tuesday, the class rectangle and attributes are added
 		// to the grid
